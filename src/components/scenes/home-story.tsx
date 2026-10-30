@@ -16,6 +16,7 @@ import {
 } from "@/components/illustrations/logistics";
 import { StatStrip } from "@/components/content/stat-strip";
 import { HomeStoryAnimations } from "@/components/scenes/home-story-animations";
+import { HomeJourney } from "@/components/scenes/home-journey";
 import type {
   PublicContentSettings,
   PublicService,
@@ -297,9 +298,20 @@ export function HomeStory({
       tabIndex={-1}
     >
       <HomeStoryAnimations />
-      {homeContent.scenes.map((scene, index) => (
+      <HomeJourney services={services} />
+      <div className="journey-fallback">
+        {homeContent.scenes.slice(0, 3).map((scene, index) => (
+          <SceneSection
+            index={index}
+            key={scene.id}
+            publicSettings={publicSettings}
+            scene={scene}
+          />
+        ))}
+      </div>
+      {homeContent.scenes.slice(3).map((scene, i) => (
         <SceneSection
-          index={index}
+          index={i + 3}
           key={scene.id}
           publicSettings={publicSettings}
           scene={scene}

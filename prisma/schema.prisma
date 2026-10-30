@@ -1,0 +1,143 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  STAFF
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  QUOTED
+  WON
+  LOST
+  SPAM
+}
+
+enum ServiceType {
+  OCEAN
+  AIR
+  WAREHOUSING
+  CUSTOMS
+  RORO_PROJECT
+  DANGEROUS_GOODS
+  NOT_SURE
+}
+
+enum GalleryCategory {
+  OCEAN
+  AIR
+  WAREHOUSE
+  ROAD
+  OTHER
+}
+
+model AdminUser {
+  id              String     @id @default(cuid())
+  email           String     @unique
+  name            String
+  passwordHash    String
+  role            Role       @default(STAFF)
+  active          Boolean    @default(true)
+  passwordVersion Int        @default(0)
+  mustChangePassword Boolean @default(false)
+  createdAt       DateTime   @default(now())
+  lastLoginAt     DateTime?
+  auditLogs       AuditLog[]
+}
+
+model Enquiry {
+  id            String        @id @default(cuid())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  fullName      String
+  company       String?
+  email         String
+  phone         String?
+  serviceType   ServiceType
+  origin        String?
+  destination   String?
+  cargoType     String?
+  weightVolume  String?
+  message       String
+  consent       Boolean
+  status        EnquiryStatus @default(NEW)
+  internalNotes String?
+  sourcePage    String?
+  ipHash        String?
+  userAgent     String?
+
+  @@index([status, createdAt])
+  @@index([email])
+}
+
+model Service {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  title      String
+  headline   String
+  summary    String
+  body       String
+  highlights String[]
+  sortOrder  Int      @default(0)
+  published  Boolean  @default(true)
+  updatedAt  DateTime @updatedAt
+}
+
+model GalleryItem {
+  id        String          @id @default(cuid())
+  title     String
+  caption   String?
+  alt       String
+  category  GalleryCategory @default(OTHER)
+  imageUrl  String
+  storageKey String?
+  blurDataUrl String?
+  width     Int?
+  height    Int?
+  sortOrder Int             @default(0)
+  published Boolean         @default(true)
+  createdAt DateTime        @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  confirmed Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  createdAt    DateTime @default(now())
+  unsubscribed Boolean  @default(false)
+}
+
+model RateLimitHit {
+  id        String   @id @default(cuid())
+  key       String
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+  @@index([createdAt])
+}
+
+model AuditLog {
+  id        String     @id @default(cuid())
+  userId    String?
+  user      AdminUser? @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String?
+  meta      Json?
+  createdAt DateTime   @default(now())
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <title>Warehousing illustration placeholder</title>
+  <rect width="960" height="640" fill="currentColor" opacity=".06"/>
+  <path d="M166 291 480 112l314 179v237H166z" fill="currentColor" opacity=".16"/>
+  <path d="M235 317h490v211H235z" fill="currentColor" opacity=".5"/>
+  <path d="M424 373h112v155H424zM270 348h116v74H270zm304 0h116v74H574z" fill="currentColor" opacity=".35"/>
+  <path d="M130 548h700" stroke="currentColor" stroke-width="18" opacity=".55"/>
+</svg>

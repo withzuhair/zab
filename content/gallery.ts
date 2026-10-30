@@ -1,0 +1,58 @@
+export const galleryItems = [
+  {
+    title: "Ocean freight",
+    category: "Ocean",
+    src: "/images/placeholders/ocean-freight.svg",
+    alt: "Illustrative placeholder of a cargo vessel on the ocean",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Container ship",
+    category: "Ocean",
+    src: "/images/placeholders/ocean-freight.svg",
+    alt: "Illustrative placeholder representing container shipping",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Air freight",
+    category: "Air",
+    src: "/images/placeholders/air-freight.svg",
+    alt: "Illustrative placeholder of an aircraft in flight",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Air cargo",
+    category: "Air",
+    src: "/images/placeholders/air-freight.svg",
+    alt: "Illustrative placeholder representing air cargo transport",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Warehousing",
+    category: "Warehouse",
+    src: "/images/placeholders/warehouse.svg",
+    alt: "Illustrative placeholder of a warehouse",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Storage and distribution",
+    category: "Warehouse",
+    src: "/images/placeholders/warehouse.svg",
+    alt: "Illustrative placeholder representing storage and distribution",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Road freight",
+    category: "Road",
+    src: "/images/placeholders/warehouse.svg",
+    alt: "Illustrative placeholder representing road freight",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+  {
+    title: "Cargo handling",
+    category: "Road",
+    src: "/images/placeholders/warehouse.svg",
+    alt: "Illustrative placeholder representing cargo handling",
+    caption: "Illustrative placeholder — replace with a ZAB Shipping photo.",
+  },
+] as const;

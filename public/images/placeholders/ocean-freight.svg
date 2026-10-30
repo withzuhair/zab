@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <title>Ocean freight illustration placeholder</title>
+  <rect width="960" height="640" fill="currentColor" opacity=".06"/>
+  <path d="M0 430h960v210H0z" fill="currentColor" opacity=".12"/>
+  <path d="M184 384h590l-72 106H264z" fill="currentColor" opacity=".7"/>
+  <path d="M310 258h126v110H310zm138 0h126v110H448zm138 0h126v110H586z" fill="currentColor" opacity=".45"/>
+  <path d="M0 505c80-34 160-34 240 0s160 34 240 0 160-34 240 0 160 34 240 0" fill="none" stroke="currentColor" stroke-width="12" opacity=".45"/>
+</svg>

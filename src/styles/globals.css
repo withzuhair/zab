@@ -209,20 +209,3 @@
     transform: translateX(8px);
   }
 }
-
-/* Homepage journey: show the pinned animation only on desktop without reduced motion.
-   Otherwise show the original stacked scenes. */
-.journey-stage {
-  display: none;
-}
-.journey-fallback {
-  display: block;
-}
-@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-  .journey-stage {
-    display: block;
-  }
-  .journey-fallback {
-    display: none;
-  }
-}

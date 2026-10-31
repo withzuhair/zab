@@ -39,39 +39,20 @@ test("home story scenes become visible while scrolling", async ({ page }) => {
     name: "ZAB Shipping freight forwarding",
   });
 
-  const isDesktop = (page.viewportSize()?.width ?? 0) >= 768;
-
-  if (isDesktop) {
-    const journey = page.locator("[data-journey]");
-    await expect(journey).toBeVisible();
-    for (const sceneId of [
-      "air",
-      "warehousing",
-      "customs",
-      "specialised",
-      "proof",
-      "cta",
-    ]) {
-      const scene = story.locator(`#scene-${sceneId}`);
-      await scene.scrollIntoViewIfNeeded();
-      await expect(scene.getByRole("heading")).toBeVisible();
-    }
-  } else {
-    for (const sceneId of [
-      "arrival",
-      "one-roof",
-      "ocean",
-      "air",
-      "warehousing",
-      "customs",
-      "specialised",
-      "proof",
-      "cta",
-    ]) {
-      const scene = story.locator(`#scene-${sceneId}`);
-      await scene.scrollIntoViewIfNeeded();
-      await expect(scene.getByRole("heading")).toBeVisible();
-    }
+  for (const sceneId of [
+    "arrival",
+    "one-roof",
+    "ocean",
+    "air",
+    "warehousing",
+    "customs",
+    "specialised",
+    "proof",
+    "cta",
+  ]) {
+    const scene = story.locator(`#scene-${sceneId}`);
+    await scene.scrollIntoViewIfNeeded();
+    await expect(scene.getByRole("heading")).toBeVisible();
   }
 
   expect(runtimeErrors).toEqual([]);
@@ -102,7 +83,7 @@ test("home animations are cleaned up during client navigation", async ({
   await page.getByRole("link", { name: "ZAB Shipping LLC home" }).click();
   await expect(page).toHaveURL("/");
   await expect(page.locator("[data-scene]")).toHaveCount(9);
-  await expect(page.locator("[data-journey]")).toBeVisible();
+  await expect(page.locator("[data-scene]").first()).toBeVisible();
   await expect(page.locator(".pin-spacer").first()).toBeAttached();
 });
 

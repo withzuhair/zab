@@ -55,7 +55,6 @@ export function HomeStoryAnimations() {
         () => {
           gsap.utils
             .toArray<HTMLElement>("[data-scene]", story)
-            .filter((scene) => !scene.closest(".journey-fallback"))
             .forEach((scene, index) => {
               const art = scene.querySelector<HTMLElement>("[data-art]");
               const content = scene.querySelector<HTMLElement>("[data-reveal]");
